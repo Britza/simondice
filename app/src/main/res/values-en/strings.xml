@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+
+    <string name="app_name">Simon Says</string>
+    <string name="boton_jugar">PLAY</string>
+    <string name="boton_amarillo">YELLOW</string>
+    <string name="boton_rojo">RED</string>
+    <string name="boton_verde">GREEN</string>
+    <string name="boton_azul">BLUE</string>
+
+</resources>
