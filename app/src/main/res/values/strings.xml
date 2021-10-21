@@ -5,5 +5,6 @@
     <string name="boton_rojo">ROJO</string>
     <string name="boton_verde">VERDE</string>
     <string name="boton_azul">AZUL</string>
+    <string name="boton_ronda">Ronda</string>
 
 </resources>

@@ -7,5 +7,7 @@
     <string name="boton_rojo">RED</string>
     <string name="boton_verde">GREEN</string>
     <string name="boton_azul">BLUE</string>
+    <string name="boton_ronda">Round</string>
+
 
 </resources>
