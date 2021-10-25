@@ -14,9 +14,10 @@
         android:layout_marginStart="68dp"
         android:layout_marginTop="132dp"
         android:backgroundTint="#FFEB3B"
-        android:text="@string/boton_amarillo"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titulo" />
+        <!--android:text="@string/boton_amarillo"-->
 
     <Button
         android:id="@+id/rojo"
@@ -26,12 +27,12 @@
         android:layout_marginTop="132dp"
         android:layout_marginEnd="63dp"
         android:backgroundTint="#E61616"
-        android:text="@string/boton_rojo"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/amarillo"
         app:layout_constraintTop_toBottomOf="@+id/titulo" />
-
+        <!--android:text="@string/boton_rojo"-->
     <Button
         android:id="@+id/verde"
         android:layout_width="115dp"
@@ -40,10 +41,11 @@
         android:layout_marginTop="100dp"
         android:layout_marginBottom="99dp"
         android:backgroundTint="#26E81F"
-        android:text="@string/boton_verde"
+
         app:layout_constraintBottom_toTopOf="@+id/jugar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/amarillo" />
+        <!--android:text="@string/boton_verde"-->
 
     <Button
         android:id="@+id/azul"
@@ -53,10 +55,11 @@
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="99dp"
         android:backgroundTint="#133FE1"
-        android:text="@string/boton_azul"
+
         app:layout_constraintBottom_toTopOf="@+id/jugar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rojo" />
+        <!--android:text="@string/boton_azul"-->
 
     <Button
         android:id="@+id/jugar"

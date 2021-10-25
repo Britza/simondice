@@ -64,19 +64,20 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("estado", "Ejecuta la secuencia")
 
-        val green = findViewById<Button>(R.id.verde)
-        val yellow = findViewById<Button>(R.id.amarillo)
-        val blue = findViewById<Button>(R.id.azul)
-        val red = findViewById<Button>(R.id.rojo)
+
+
 
         //green:Button, yellow:Button, blue:Button, red:Button
-        val bgreen = GlobalScope.launch(Dispatchers.Main){
-            suspendingTask(green)
+        val job = GlobalScope.launch(Dispatchers.Main){
+            suspendingTask()
         }
 
     }
 
-    private fun suspendingTask(bgreen: Any) {
+    private fun suspendingTask() {
+
+        var sec: Array<Int> = arrayOf()
+        val random = (0..3).random()
 
     }
 
