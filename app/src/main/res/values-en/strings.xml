@@ -3,10 +3,11 @@
 
     <string name="app_name">Simon Says</string>
     <string name="boton_jugar">PLAY</string>
-    <string name="boton_amarillo">YELLOW</string>
+   <!-- <string name="boton_amarillo">YELLOW</string>
     <string name="boton_rojo">RED</string>
     <string name="boton_verde">GREEN</string>
-    <string name="boton_azul">BLUE</string>
+    <string name="boton_azul">BLUE</string>-->
+    <string name="val_text">GAME ON!</string>
     <string name="boton_ronda">Round</string>
 
 

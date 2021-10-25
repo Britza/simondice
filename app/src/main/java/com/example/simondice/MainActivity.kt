@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -35,6 +36,13 @@ class MainActivity : AppCompatActivity() {
 
         empezaraJugar.setOnClickListener{
             Log.d("estado","Empieza la partida")
+
+            //Toast llamado desde los Strings
+            val text=getString(R.string.val_text)
+            val duration = Toast.LENGTH_SHORT
+
+            val toast = Toast.makeText(applicationContext, text, duration)
+            toast.show()
 
             mostrarRonda()
             ejecutarSecuencia()

@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">Simon Dice</string>
     <string name="boton_jugar">JUGAR</string>
-    <string name="boton_amarillo">AMARILLO</string>
+    <!--<string name="boton_amarillo">AMARILLO</string>
     <string name="boton_rojo">ROJO</string>
     <string name="boton_verde">VERDE</string>
-    <string name="boton_azul">AZUL</string>
+    <string name="boton_azul">AZUL</string>-->
+    <string name="val_text">EMPIEZA EL JUEGO!</string>
     <string name="boton_ronda">Ronda</string>
 
 </resources>
