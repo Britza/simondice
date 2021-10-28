@@ -1,5 +1,7 @@
 package com.example.simondice
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,28 +10,32 @@ import android.widget.TextView
 import android.widget.Toast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.math.RoundingMode.valueOf
 
 class MainActivity : AppCompatActivity() {
+
+    //definir variables
+    //val random =(0..3).random()
+    //val cuatroColores= arrayOf("amarillo", "rojo", "verde", "azul")
+    //val todosColores = arrayListOf(cuatroColores[random])
+
+
+
+    //Botones
+
+    val green:Button? = null
+    val yellow:Button? = null
+    val blue:Button? = null
+    val red:Button? = null
+
+
     var ronda:Int=0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
-
-        //definir variables
-        val random =(0..3).random()
-        val cuatroColores= arrayOf("amarillo", "rojo", "verde", "azul")
-        val todosColores = arrayListOf(cuatroColores[random])
-
-        //Botones
-
-        val green = findViewById<Button>(R.id.verde)
-        val yellow = findViewById<Button>(R.id.amarillo)
-        val blue = findViewById<Button>(R.id.azul)
-        val red = findViewById<Button>(R.id.rojo)
 
 
         val empezaraJugar:Button = findViewById(R.id.jugar)
@@ -46,6 +52,8 @@ class MainActivity : AppCompatActivity() {
 
             mostrarRonda()
             ejecutarSecuencia()
+
+
         }
 
 
@@ -60,25 +68,44 @@ class MainActivity : AppCompatActivity() {
         Log.d("estado", "Muestra la ronda")
     }
 
-    private fun ejecutarSecuencia(){
+   private fun ejecutarSecuencia(){
 
         Log.d("estado", "Ejecuta la secuencia")
 
-
-
-
         //green:Button, yellow:Button, blue:Button, red:Button
         val job = GlobalScope.launch(Dispatchers.Main){
-            suspendingTask()
+            secuenciaBotones()
+            delay(3000L)
         }
+       Log.d("estado", "Secuencia ejecutada")
 
-    }
+   }
 
-    private fun suspendingTask() {
+    suspend fun secuenciaBotones() {
 
-        var sec: Array<Int> = arrayOf()
-        val random = (0..3).random()
+       // val secuencia = ronda +1
+        val Colores = arrayOf("#008000","#FFFF00","#3498DB","#EC4849")
+        var arrayBotones = hashMapOf<Int,Button>()
+        arrayBotones[0]= findViewById(R.id.verde)
+        arrayBotones[1]= findViewById(R.id.amarillo)
+        arrayBotones[2] = findViewById(R.id.azul)
+        arrayBotones[3] = findViewById(R.id.rojo)
 
+        var secuencia:Array<Int> = arrayOf()
+        var random = (0..3).random()
+        secuencia = arrayOf(random)
+        for(i in 1..ronda) {
+            delay(500L)
+            arrayBotones[ronda]?.setBackgroundColor(Color.WHITE)
+            delay(500L)
+            arrayBotones[ronda]?.setBackgroundColor(Color.parseColor(Colores[ronda]))
+            //var todosColores = arrayListOf(cuatroColores[random])
+            //val b: Button = arrayBotones[random]!!
+            //delay(1000L)
+            //arrayBotones[ramdon]?.setBackgroundColor()
+            //b.foregroundTintList = ColorStateList.valueOf(Color.WHITE)
+        }
+        //return secuencia
     }
 
     private fun mensajeUsuario(){
