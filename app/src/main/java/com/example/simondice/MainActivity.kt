@@ -29,7 +29,8 @@ class MainActivity : AppCompatActivity() {
     val yellow:Button? = null
     val blue:Button? = null
     val red:Button? = null
-
+    var listrandom:Array<Int> = arrayOf()
+    val secuencia: MutableList<Int> = listrandom.toMutableList()
 
     var ronda:Int=0
 
@@ -91,14 +92,15 @@ class MainActivity : AppCompatActivity() {
         arrayBotones[2] = findViewById(R.id.azul)
         arrayBotones[3] = findViewById(R.id.rojo)
 
-        var secuencia:Array<Int> = arrayOf()
+
         var random = (0..3).random()
-        secuencia = arrayOf(random)
-        for(i in 1..ronda) {
+        secuencia.add(random)
+        val tamano = ronda -1
+        for(i in 0..tamano) {
             delay(500L)
-            arrayBotones[ronda]?.setBackgroundColor(Color.WHITE)
+            arrayBotones[secuencia[i]]?.setBackgroundColor(Color.WHITE)
             delay(500L)
-            arrayBotones[ronda]?.setBackgroundColor(Color.parseColor(Colores[ronda]))
+            arrayBotones[secuencia[i]]?.setBackgroundColor(Color.parseColor(Colores[secuencia[i]]))
             //var todosColores = arrayListOf(cuatroColores[random])
             //val b: Button = arrayBotones[random]!!
             //delay(1000L)
