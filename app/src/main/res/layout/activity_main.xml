@@ -13,7 +13,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="68dp"
         android:layout_marginTop="132dp"
-        android:backgroundTint="#FFEB3B"
+        android:backgroundTint="#FFFF00"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titulo" />
@@ -26,7 +26,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="132dp"
         android:layout_marginEnd="63dp"
-        android:backgroundTint="#E61616"
+        android:backgroundTint="#EC4849"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -40,7 +40,7 @@
         android:layout_marginStart="68dp"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="99dp"
-        android:backgroundTint="#26E81F"
+        android:backgroundTint="#008000"
 
         app:layout_constraintBottom_toTopOf="@+id/jugar"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="99dp"
-        android:backgroundTint="#133FE1"
+        android:backgroundTint="#3498DB"
 
         app:layout_constraintBottom_toTopOf="@+id/jugar"
         app:layout_constraintEnd_toEndOf="parent"

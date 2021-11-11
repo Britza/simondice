@@ -22,30 +22,45 @@ class MainActivity : AppCompatActivity() {
     //val todosColores = arrayListOf(cuatroColores[random])
 
 
-
     //Botones
+    var empezarJugar: Button? = null
+    var Ronda:TextView? = null
+    var green: Button? = null
+    var yellow: Button? = null
+    var blue: Button? = null
+    var red: Button? = null
 
-    val green:Button? = null
-    val yellow:Button? = null
-    val blue:Button? = null
-    val red:Button? = null
-    var listrandom:Array<Int> = arrayOf()
-    val secuencia: MutableList<Int> = listrandom.toMutableList()
+    var arrayBotones = hashMapOf<Int, Button>()
+    var secuencia: MutableList<Int> = arrayListOf<Int>()
+    var comprobar: MutableList<Int> = arrayListOf<Int>()
 
-    var ronda:Int=0
+    var ronda: Int = 0
+    var indice: Int = 0
+    var resultado: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        val empezaraJugar:Button = findViewById(R.id.jugar)
+        empezarJugar= findViewById(R.id.jugar)
+        Ronda= findViewById(R.id.ronda)
 
-        empezaraJugar.setOnClickListener{
-            Log.d("estado","Empieza la partida")
+        green = findViewById(R.id.verde)
+        yellow = findViewById(R.id.amarillo)
+        blue = findViewById(R.id.azul)
+        red = findViewById(R.id.rojo)
+        arrayBotones[0] = findViewById(R.id.verde)
+        arrayBotones[1] = findViewById(R.id.amarillo)
+        arrayBotones[2] = findViewById(R.id.azul)
+        arrayBotones[3] = findViewById(R.id.rojo)
+
+
+        empezarJugar?.setOnClickListener {
+            Log.d("estado", "Empieza la partida")
 
             //Toast llamado desde los Strings
-            val text=getString(R.string.val_text)
+            val text = getString(R.string.val_text)
             val duration = Toast.LENGTH_SHORT
 
             val toast = Toast.makeText(applicationContext, text, duration)
@@ -56,69 +71,117 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+        green?.setOnClickListener {
+            Toast.makeText(this, "verde", Toast.LENGTH_SHORT).show()
+            comprobar.add(1)
+            resultado = comprobar[indice] == secuencia[indice]
+            indice++
+            if(secuencia.size==comprobar.size){
+                comprobarSecuencia()
+            }
+        }
+
+        red?.setOnClickListener {
+            Toast.makeText(this, "rojo", Toast.LENGTH_SHORT).show()
+            comprobar.add(0)
+            resultado = comprobar[indice] == secuencia[indice]
+            indice++
+            if(secuencia.size==comprobar.size){
+                comprobarSecuencia()
+            }
+        }
+
+        yellow?.setOnClickListener {
+            Toast.makeText(this, "amarillo", Toast.LENGTH_SHORT).show()
+            comprobar.add(2)
+            resultado = comprobar[indice] == secuencia[indice]
+            indice++
+            if(secuencia.size==comprobar.size){
+                comprobarSecuencia()
+            }
+        }
+        blue?.setOnClickListener {
+            Toast.makeText(this, "azul", Toast.LENGTH_SHORT).show()
+            comprobar.add(3)
+            resultado = comprobar[indice] == secuencia[indice]
+            indice++
+            if(secuencia.size==comprobar.size){
+                comprobarSecuencia()
+            }
+        }
+
+
+
 
 
     }
-    private fun mostrarRonda(){
 
-        val Ronda:TextView = findViewById(R.id.ronda)
 
+    private fun mostrarRonda() {
+
+
+        empezarJugar?.visibility = Button.INVISIBLE
         ronda++
-        Ronda.setText("Ronda " + ronda).toString()
+        Ronda?.setText("Ronda " + ronda).toString()
+
 
         Log.d("estado", "Muestra la ronda")
     }
 
-   private fun ejecutarSecuencia(){
+    private fun ejecutarSecuencia() {
 
         Log.d("estado", "Ejecuta la secuencia")
 
         //green:Button, yellow:Button, blue:Button, red:Button
-        val job = GlobalScope.launch(Dispatchers.Main){
+        val job = GlobalScope.launch(Dispatchers.Main) {
             secuenciaBotones()
-            delay(3000L)
+            //delay(3000L)
         }
-       Log.d("estado", "Secuencia ejecutada")
+        Log.d("estado", "Secuencia ejecutada")
 
-   }
+    }
 
     suspend fun secuenciaBotones() {
 
-       // val secuencia = ronda +1
-        val Colores = arrayOf("#008000","#FFFF00","#3498DB","#EC4849")
-        var arrayBotones = hashMapOf<Int,Button>()
-        arrayBotones[0]= findViewById(R.id.verde)
-        arrayBotones[1]= findViewById(R.id.amarillo)
-        arrayBotones[2] = findViewById(R.id.azul)
-        arrayBotones[3] = findViewById(R.id.rojo)
-
-
+        // val secuencia = ronda +1
+        val Colores = arrayOf("#008000", "#FFFF00", "#3498DB", "#EC4849")
         var random = (0..3).random()
         secuencia.add(random)
-        val tamano = ronda -1
-        for(i in 0..tamano) {
+        var tamano = ronda - 1
+        for (i in 0..tamano) {
             delay(500L)
             arrayBotones[secuencia[i]]?.setBackgroundColor(Color.WHITE)
             delay(500L)
             arrayBotones[secuencia[i]]?.setBackgroundColor(Color.parseColor(Colores[secuencia[i]]))
-            //var todosColores = arrayListOf(cuatroColores[random])
-            //val b: Button = arrayBotones[random]!!
-            //delay(1000L)
-            //arrayBotones[ramdon]?.setBackgroundColor()
-            //b.foregroundTintList = ColorStateList.valueOf(Color.WHITE)
+
         }
-        //return secuencia
+
     }
 
-    private fun mensajeUsuario(){
+    private fun mensajeUsuario() {
 
         Log.d("estado", "Muestra un mensaje")
     }
 
-    private fun comprobarSecuencia(){
-
-        Log.d("estado", "Comprobar la secuencia")
+    private fun comprobarSecuencia() {
+    Log.d("Estado", "Comprobando secuencia")
+    if(!resultado){
+        Toast.makeText(this,"Fin del juego",Toast.LENGTH_SHORT).show()
+        ronda =0
+        empezarJugar?.visibility = Button.VISIBLE
+        comprobar= arrayListOf()
+    }else{
+        ronda++
+        Ronda?.setText("Ronda " + ronda).toString()
+        ejecutarSecuencia()
+        comprobar= arrayListOf()
     }
+    Log.d("Estado", "Secuencia comprobada")
+
+}
+
+
 
 
 }
+
