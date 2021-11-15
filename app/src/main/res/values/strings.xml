@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Simon Dice</string>
     <string name="boton_jugar">JUGAR</string>
+    <string name="app2_name">SIMON DICE</string>
     <!--<string name="boton_amarillo">AMARILLO</string>
     <string name="boton_rojo">ROJO</string>
     <string name="boton_verde">VERDE</string>

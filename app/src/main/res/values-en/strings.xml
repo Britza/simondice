@@ -3,6 +3,7 @@
 
     <string name="app_name">Simon Says</string>
     <string name="boton_jugar">PLAY</string>
+    <string name="app2_name">SIMON SAYS</string>
    <!-- <string name="boton_amarillo">YELLOW</string>
     <string name="boton_rojo">RED</string>
     <string name="boton_verde">GREEN</string>
