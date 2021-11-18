@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
 
     var ronda: Int = 0
     var indice: Int = 1
+
     var resultado: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,11 +61,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("estado", "Empieza la partida")
 
             //Toast llamado desde los Strings
-            val text = getString(R.string.val_text)
-            val duration = Toast.LENGTH_SHORT
-
-            val toast = Toast.makeText(applicationContext, text, duration)
-            toast.show()
+            mensajeUsuario(1)
 
             mostrarRonda()
             ejecutarSecuencia()
@@ -204,9 +201,27 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun mensajeUsuario() {
+    private fun mensajeUsuario(key:Int) {
 
-        Log.d("estado", "Muestra un mensaje")
+        Log.d("estado", "Muestra un mensaje al usuario")
+
+        when(key){
+            1->{
+                val text = getString(R.string.val_empieza)
+                val duration = Toast.LENGTH_SHORT
+
+                val toast = Toast.makeText(applicationContext, text, duration)
+                toast.show()
+            }
+
+            2->{
+                val text = getString(R.string.val_acaba)
+                val duration = Toast.LENGTH_SHORT
+
+                val toast = Toast.makeText(applicationContext, text, duration)
+                toast.show()
+            }
+        }
     }
 
     private fun comprobarSecuencia() {
@@ -220,7 +235,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     if(!resultado){
-        Toast.makeText(this,"Fin del juego",Toast.LENGTH_SHORT).show()
+        mensajeUsuario(2)
         ronda =0
         empezarJugar?.visibility = Button.VISIBLE
         comprobar= arrayListOf()
