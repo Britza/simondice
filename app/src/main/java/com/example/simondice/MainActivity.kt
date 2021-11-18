@@ -73,61 +73,83 @@ class MainActivity : AppCompatActivity() {
         }
         green?.setOnClickListener {
             Toast.makeText(this, "verde", Toast.LENGTH_SHORT).show()
-            if(indice == 1) {
+
+
+            if(indice>=1) {
                 comprobar = arrayListOf()
-                //indice --
             }
             comprobar.add(0)
-            indice --
-            resultado = comprobar[indice] == secuencia[indice]
-            indice++
-            if(secuencia.size==comprobar.size){
+
+            if(indice !=0){
+                indice--
+                resultado = comprobar[indice] == secuencia[indice]
+            }else {
+                indice++
+                resultado = comprobar[indice] == secuencia[indice]
+            }
+            if(comprobar.size==secuencia.size) {
+                indice++
                 comprobarSecuencia()
             }
         }
 
         yellow?.setOnClickListener {
             Toast.makeText(this, "amarillo", Toast.LENGTH_SHORT).show()
-            if(indice == 1) {
+            if(indice>=1) {
                 comprobar = arrayListOf()
-                //indice --
             }
             comprobar.add(1)
-            indice --
-            resultado = comprobar[indice] == secuencia[indice]
-            indice++
-            if(secuencia.size==comprobar.size){
+
+            if(indice !=0){
+                indice--
+                resultado = comprobar[indice] == secuencia[indice]
+            }else {
+                indice++
+                resultado = comprobar[indice] == secuencia[indice]
+            }
+            if(comprobar.size==secuencia.size) {
+                indice++
                 comprobarSecuencia()
             }
+
         }
 
         blue?.setOnClickListener {
             Toast.makeText(this, "azul", Toast.LENGTH_SHORT).show()
-            if(indice == 1) {
+            if(indice>=1) {
                 comprobar = arrayListOf()
-                //indice --
             }
             comprobar.add(2)
-            indice --
-            resultado = comprobar[indice] == secuencia[indice]
-            indice++
-            if(secuencia.size==comprobar.size){
+
+            if(indice !=0){
+                indice--
+                resultado = comprobar[indice] == secuencia[indice]
+            }else {
+                indice++
+                resultado = comprobar[indice] == secuencia[indice]
+            }
+            if(comprobar.size==secuencia.size) {
+                indice++
                 comprobarSecuencia()
             }
         }
 
         red?.setOnClickListener {
             Toast.makeText(this, "rojo", Toast.LENGTH_SHORT).show()
-            if(indice == 1) {
+            if(indice>=1) {
                 comprobar = arrayListOf()
-                //indice --
             }
-
             comprobar.add(3)
-            indice --
-            resultado = comprobar[indice] == secuencia[indice]
-            indice++
-            if(secuencia.size==comprobar.size){
+
+            if(indice !=0){
+                indice--
+                resultado = comprobar[indice] == secuencia[indice]
+            }else {
+                indice++
+                resultado = comprobar[indice] == secuencia[indice]
+            }
+            if(comprobar.size==secuencia.size) {
+                indice++
                 comprobarSecuencia()
             }
         }
