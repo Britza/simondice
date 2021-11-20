@@ -16,12 +16,6 @@ import java.math.RoundingMode.valueOf
 
 class MainActivity : AppCompatActivity() {
 
-    //definir variables
-    //val random =(0..3).random()
-    //val cuatroColores= arrayOf("amarillo", "rojo", "verde", "azul")
-    //val todosColores = arrayListOf(cuatroColores[random])
-
-
     //Botones
     var empezarJugar: Button? = null
     var Ronda:TextView? = null
@@ -35,8 +29,7 @@ class MainActivity : AppCompatActivity() {
     var comprobar: MutableList<Int> = arrayListOf<Int>()
 
     var ronda: Int = 0
-    var indice: Int = 1
-
+    var indice: Int = 0
     var resultado: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,94 +62,64 @@ class MainActivity : AppCompatActivity() {
 
         }
         green?.setOnClickListener {
-            Toast.makeText(this, "verde", Toast.LENGTH_SHORT).show()
 
-
-            if(indice==1) {
-                comprobar = arrayListOf()
-                indice++
-            }
             comprobar.add(0)
+            indice=comprobar.size-1
+            resultado = comprobar[indice] == secuencia[indice]
 
-            /*if(indice !=0){
-                indice--
-                resultado = comprobar[indice] == secuencia[indice]
-            }else {
-                indice++
-                resultado = comprobar[indice] == secuencia[indice]
-            }*/
-            if(comprobar.size==secuencia.size) {
-                indice=1
+            if(comprobar.size == ronda){
+                comprobarSecuencia()
+            }
+
+            if(!resultado){
                 comprobarSecuencia()
             }
         }
 
         yellow?.setOnClickListener {
-            Toast.makeText(this, "amarillo", Toast.LENGTH_SHORT).show()
-            if(indice==1) {
-                comprobar = arrayListOf()
-                indice++
-            }
-            comprobar.add(1)
 
-            /*if(indice !=0){
-                indice--
-                resultado = comprobar[indice] == secuencia[indice]
-            }else {
-                indice++
-                resultado = comprobar[indice] == secuencia[indice]
-            }*/
-            if(comprobar.size==secuencia.size) {
-                indice=1
+            comprobar.add(1)
+            indice=comprobar.size-1
+            resultado = comprobar[indice] == secuencia[indice]
+
+            if(comprobar.size == ronda){
                 comprobarSecuencia()
             }
 
+            if(!resultado){
+                comprobarSecuencia()
+            }
         }
 
         blue?.setOnClickListener {
-            Toast.makeText(this, "azul", Toast.LENGTH_SHORT).show()
-            if(indice==1) {
-                comprobar = arrayListOf()
-                indice++
-            }
-            comprobar.add(2)
 
-            /*if(indice !=0){
-                indice--
-                resultado = comprobar[indice] == secuencia[indice]
-            }else {
-                indice++
-                resultado = comprobar[indice] == secuencia[indice]
-            }*/
-            if(comprobar.size==secuencia.size) {
-                indice=1
+            comprobar.add(2)
+            indice=comprobar.size-1
+            resultado = comprobar[indice] == secuencia[indice]
+
+            if(comprobar.size == ronda){
+                comprobarSecuencia()
+            }
+
+            if(!resultado){
                 comprobarSecuencia()
             }
         }
 
         red?.setOnClickListener {
-            Toast.makeText(this, "rojo", Toast.LENGTH_SHORT).show()
-            if(indice==1) {
-                comprobar = arrayListOf()
-                indice++
-            }
+
             comprobar.add(3)
+            indice=comprobar.size-1
+            resultado = comprobar[indice] == secuencia[indice]
 
-            /*if(indice !=0){
-                indice--
-                resultado = comprobar[indice] == secuencia[indice]
-            }else {
-                indice++
-                resultado = comprobar[indice] == secuencia[indice]
-            }*/
-            if(comprobar.size==secuencia.size) {
+            if(comprobar.size == ronda){
+                comprobarSecuencia()
+            }
 
-                indice=1
+            if(!resultado){
                 comprobarSecuencia()
             }
         }
-
-
     }
 
 
@@ -175,10 +138,9 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("estado", "Ejecuta la secuencia")
 
-        //green:Button, yellow:Button, blue:Button, red:Button
+
         val job = GlobalScope.launch(Dispatchers.Main) {
             secuenciaBotones()
-            //delay(3000L)
         }
         Log.d("estado", "Secuencia ejecutada")
 
@@ -186,7 +148,6 @@ class MainActivity : AppCompatActivity() {
 
     suspend fun secuenciaBotones() {
 
-        // val secuencia = ronda +1
         val Colores = arrayOf("#008000", "#FFFF00", "#3498DB", "#EC4849")
         var random = (0..3).random()
         secuencia.add(random)
@@ -226,13 +187,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun comprobarSecuencia() {
     Log.d("Estado", "Comprobando secuencia")
-        var n=0
-        for (s in secuencia){
-            if(s==comprobar.get(n))
-                n++
-            else
-                resultado=false
-        }
 
     if(!resultado){
         mensajeUsuario(2)
@@ -241,13 +195,12 @@ class MainActivity : AppCompatActivity() {
         comprobar= arrayListOf()
         secuencia = arrayListOf()
         resultado=true
-        n=0
+
     }else{
         ronda++
+        comprobar= arrayListOf()
         Ronda?.setText("Ronda " + ronda).toString()
         ejecutarSecuencia()
-        n=0
-
     }
     Log.d("Estado", "Secuencia comprobada")
 
